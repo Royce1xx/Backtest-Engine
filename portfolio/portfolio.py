@@ -3,6 +3,7 @@ import pandas as pd
 class Portfolio:
     """
     Manages cash, positions, and tracks equity over time.
+    Handles trade execution, position tracking, and performance calculation.
     """
     
     def __init__(self, initial_cash):
@@ -15,8 +16,8 @@ class Portfolio:
         self.cash = initial_cash
         self.positions = {}  # symbol -> {"qty": int, "avg": float}
         self.equity_history = [(None, initial_cash)]  # (timestamp, equity)
-        self.trade_history = []
-        self.daily_pnl = []
+        self.trade_history = []  # Track all trades
+        self.daily_pnl = []  # Track daily P&L
     
     def apply_fill(self, symbol, qty, price):
         """

@@ -2,6 +2,7 @@
 class MACross:
     """
     Moving Average Crossover Strategy
+    Buys when short MA > long MA, sells when short MA < long MA.
     """
     
     def __init__(self, symbol, short_window=10, long_window=30, risk_frac=0.95):
@@ -18,7 +19,7 @@ class MACross:
         self.short_window = short_window
         self.long_window = long_window
         self.risk_frac = risk_frac
-        self.price_history = []
+        self.price_history = []  # Store price history for MA calculation
     
     def on_bar(self, ctx):
         """

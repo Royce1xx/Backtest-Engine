@@ -4,6 +4,7 @@ import pandas as pd
 class Context:
     """
     Provides an interface for strategies to interact with the engine.
+    Gives strategies access to market data, portfolio state, and order submission.
     """
     
     def __init__(self, data, portfolio, execution_model):
@@ -18,7 +19,7 @@ class Context:
         self.data = data
         self.portfolio = portfolio
         self.execution_model = execution_model
-        self.current_timestamp = None
+        self.current_timestamp = None  # Current time in backtest
         
         # Handle single symbol data (from yfinance)
         if isinstance(data, pd.DataFrame):

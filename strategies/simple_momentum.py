@@ -16,7 +16,7 @@ class SimpleMomentum:
         self.symbol = symbol
         self.lookback = lookback
         self.threshold = threshold
-        self.price_history = []
+        self.price_history = []  # Store price history for momentum calculation
     
     def on_bar(self, ctx):
         """

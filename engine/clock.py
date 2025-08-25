@@ -2,6 +2,7 @@
 class Clock:
     """
     Manages time progression in the backtest.
+    Iterates through timestamps to advance the simulation.
     """
     
     def __init__(self, timeline):
@@ -12,7 +13,7 @@ class Clock:
             timeline: List of timestamps to iterate through
         """
         self.timeline = timeline
-        self.current_index = 0
+        self.current_index = 0  # Current position in timeline
     
     def __iter__(self):
         """Make clock iterable."""

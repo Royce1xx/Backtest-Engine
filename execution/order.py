@@ -3,7 +3,11 @@ from dataclasses import dataclass
 
 @dataclass
 class Order:
-    symbol: str
-    qty: int                  # +buy / -sell
-    type: str = "market"      # "market" or "limit"
-    limit_price: float | None = None
+    """
+    Represents a trading order.
+    Contains symbol, quantity, order type, and optional limit price.
+    """
+    symbol: str      # Stock symbol to trade
+    qty: int         # Quantity (positive = buy, negative = sell)
+    type: str        # Order type: "market" or "limit"
+    limit_price: float = None  # Limit price for limit orders

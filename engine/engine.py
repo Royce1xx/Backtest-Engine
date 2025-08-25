@@ -8,6 +8,7 @@ from engine.context import Context
 class Engine:
     """
     Main backtest engine that orchestrates the entire simulation.
+    Coordinates data, portfolio, and strategy execution.
     """
     
     def __init__(self, data, timeline, portfolio, execution_model):
@@ -24,8 +25,8 @@ class Engine:
         self.timeline = timeline
         self.portfolio = portfolio
         self.execution_model = execution_model
-        self.clock = Clock(timeline)
-        self.context = Context(self.data, self.portfolio, self.execution_model)
+        self.clock = Clock(timeline)  # Time management
+        self.context = Context(self.data, self.portfolio, self.execution_model)  # Strategy interface
         
         # Handle single symbol data (from yfinance)
         if isinstance(data, pd.DataFrame):
@@ -43,7 +44,7 @@ class Engine:
         """
         print(f"🚀 Starting backtest for {len(self.timeline)} time periods...")
         
-        for ts in self.clock:
+        for ts in self.clock:  # Iterate through each timestamp
             # Update portfolio mark-to-market
             self.portfolio.mark_to_market(ts, self.data)
             
